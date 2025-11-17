@@ -1,0 +1,1110 @@
+/* ===== ENHANCED AIRPORT MANAGEMENT SYSTEM STYLES ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1e40af;
+    --primary-light: #3b82f6;
+    --secondary: #8b5cf6;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --dark: #1e293b;
+    --light: #f8fafc;
+    --border: #e2e8f0;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --shadow-lg: rgba(0, 0, 0, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f8fafc; /* Lighter background for the body */
+    min-height: 100vh;
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+/* ========== LOGIN PAGE (COVER PAGE) ========== */
+.login-page-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    /* NEW BACKGROUND IMAGE */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/1600x900/?airport,runway,airplane') no-repeat center center/cover;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-page-container::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: float 20s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 3rem;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+    animation: slideUp 0.6s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-container h2 {
+    font-size: 2.8rem; /* <-- MADE FONT BIGGER */
+    font-weight: 700;
+    color: var(--dark);
+    text-align: center;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.login-container h2 i {
+    color: var(--primary);
+    font-size: 2.5rem;
+}
+
+/* ========== NAVIGATION ========== */
+.navbar {
+    background: #ffffff;
+    box-shadow: 0 4px 20px var(--shadow);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--dark);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease;
+}
+
+.navbar .logo:hover {
+    transform: scale(1.05);
+}
+
+.navbar .logo i {
+    color: var(--primary);
+    font-size: 1.8rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #64748b;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:hover {
+    background: var(--light);
+    color: var(--primary);
+}
+
+.nav-links a.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.user-buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.welcome-text {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.welcome-text strong {
+    color: var(--dark);
+    font-weight: 600;
+}
+
+.btn-logout {
+    background: var(--danger);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-logout:hover {
+    background: #dc2626;
+    box-shadow: 0 6px 16px rgba(239, 68, 68, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ========== CONTENT CONTAINER ========== */
+.content-container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px var(--shadow-lg);
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== PAGE HEADERS ========== */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border);
+}
+
+.page-header h3,
+h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0;
+}
+
+h3 {
+    margin-bottom: 1rem; /* Added for general h3 tags */
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+    transform: translateY(-2px);
+}
+
+/* ========== FORMS ========== */
+.form-section { /* Added for pages like manage_aircraft */
+    background: var(--light);
+    padding: 2rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+}
+.form-section h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+}
+
+
+.login-container form {
+    background: transparent;
+    padding: 0;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="datetime-local"],
+select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: white;
+    color: var(--dark);
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+input[type="submit"] {
+    width: 100%;
+    background: var(--primary);
+    color: white;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background: var(--primary-dark);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+    transform: translateY(-2px);
+}
+
+.toggle-link {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.toggle-link a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.toggle-link a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* ========== MESSAGES ========== */
+.message {
+    padding: 16px 20px;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message.success {
+    background: #d1fae5;
+    color: #065f46;
+    border-left: 4px solid var(--success);
+}
+
+.message.error {
+    background: #fee2e2;
+    color: #991b1b;
+    border-left: 4px solid var(--danger);
+}
+
+/* ========== STATUS BOARD ========== */
+.status-board-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.status-board {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.status-board h3 {
+    padding: 1.5rem 2rem;
+    margin: 0;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 2px solid;
+}
+
+.status-board h3.departures {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    border-bottom-color: #dc2626;
+}
+
+.status-board h3.arrivals {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border-bottom-color: #059669;
+}
+
+.status-board-list {
+    list-style: none;
+}
+
+.status-board-list li {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s ease;
+    align-items: center;
+}
+
+.status-board-list li:last-child {
+    border-bottom: none;
+}
+
+.status-board-list li:hover {
+    background: var(--light);
+}
+
+.flight-info .flight-num {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.flight-info .airline {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+.flight-time {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.flight-gate {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-align: right;
+}
+
+/* ========== FLIGHT CARDS ========== */
+.flight-card-container {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.flight-card {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: auto 1.5fr 2fr 1fr 1fr 2fr;
+    gap: 1.5rem;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.flight-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 8px 24px var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+.fc-airline-logo {
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+.fc-details .flight-num {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.fc-details .airline {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+.fc-route {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.fc-time {
+    font-size: 0.95rem;
+    color: #64748b;
+}
+
+.fc-status {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.fc-status.Scheduled {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.fc-status.Delayed {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.fc-status.Boarding {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.fc-status.Departed,
+.fc-status.In.Air { /* Fixed: In Air class */
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.fc-status.Landed,
+.fc-status.Arrived {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.fc-status.Cancelled {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+/* Statuses for Aircraft Page */
+.fc-status.Active {
+    background: #d1fae5;
+    color: #065f46;
+}
+.fc-status.Maintenance {
+    background: #fef3c7;
+    color: #92400e;
+}
+.fc-status.Retired {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.action-btn {
+    padding: 10px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn-view {
+    background: var(--primary);
+}
+
+.btn-view:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-edit {
+    background: #3b82f6;
+}
+
+.btn-edit:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn-delete {
+    background: var(--danger);
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-delete:hover {
+    background: #dc2626;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* ========== TABLES ========== */
+.clean-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 2rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.clean-table thead {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+}
+
+.clean-table th {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.clean-table td {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--dark);
+}
+
+.clean-table tbody tr {
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.clean-table tbody tr:hover {
+    background: var(--light);
+}
+
+.clean-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ========== MODAL ========== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s ease;
+}
+
+.modal-content h3 {
+    margin-bottom: 1rem;
+    color: var(--dark);
+}
+
+.modal-content p {
+    color: #64748b;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.modal-content form { /* Styles for form inside modal */
+    background: transparent;
+    padding: 0;
+    margin-top: 1.5rem;
+}
+
+.modal-content label {
+    margin-bottom: 0.5rem;
+}
+
+.modal-content input, .modal-content select {
+    margin-bottom: 1rem;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+}
+
+.modal-buttons button {
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.modal-buttons button[type="button"] { /* Cancel button */
+    background: #e2e8f0;
+    color: var(--dark);
+}
+
+.modal-buttons button[type="button"]:hover {
+    background: #cbd5e1;
+}
+
+.modal-buttons a button, .modal-buttons button[type="submit"] {
+    background: var(--danger);
+    color: white;
+}
+
+.modal-buttons a button:hover, .modal-buttons button[type="submit"]:hover {
+    background: #dc2626;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* ========== CHART GRID ========== */
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.chart-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.chart-container h3 {
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+    font-size: 1.3rem;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1200px) {
+    .flight-card {
+        grid-template-columns: auto 1fr;
+        gap: 1rem;
+    }
+    
+    .fc-details { grid-column: 2 / 3; }
+    .fc-route, .fc-time, .fc-status, .action-buttons {
+        grid-column: 1 / -1;
+    }
+    .fc-route, .fc-time { margin-left: 10px; }
+    .action-buttons { justify-content: flex-start; }
+}
+
+@media (max-width: 900px) {
+    .nav-links {
+        display: none; /* Simple hide for mobile, full menu is complex */
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .user-buttons {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .content-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .status-board-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .flight-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .fc-airline-logo {
+        display: none;
+    }
+    .fc-details { grid-column: 1 / -1; }
+    .action-buttons { justify-content: center; }
+}
+/* ========== NEW STAT CARDS (Analytics Page) ========== */
+.stat-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+.stat-card {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+}
+.stat-card i {
+    font-size: 2.5rem;
+    opacity: 0.8;
+}
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+}
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* ========== NEW PROFILE BUTTON (Header) ========== */
+.btn-profile {
+    background: #e2e8f0;
+    color: var(--dark);
+    padding: 10px 24px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-profile:hover {
+    background: #cbd5e1;
+}
+.btn-profile.active {
+    background: var(--primary);
+    color: white;
+}
+/* ========== NEW PROFILE LINK (Navbar) ========== */
+.nav-links a.nav-profile {
+    color: var(--success); /* Green text */
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.nav-links a.nav-profile:hover {
+    background: #d1fae5; /* Light green background on hover */
+    color: #065f46; /* Dark green text on hover */
+}
+/* Active state for profile */
+.nav-links a.active-profile {
+    background: var(--success);
+    color: white;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ========== Profile Page Layout ========== */
+.profile-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr; /* Sidebar width and main content */
+    gap: 2rem;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.profile-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: #f8fafc; /* Light gray background for sidebar */
+    border-radius: 10px;
+}
+
+.profile-picture-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profile-stats {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #eef2ff; /* Very light blue */
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+}
+
+.profile-stats h4 {
+    margin-top: 0;
+    color: var(--primary-dark);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.profile-stats p {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.profile-stats p i {
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.profile-details {
+    padding: 1.5rem;
+    /* This rule ensures the form takes up the space */
+    background: var(--light); 
+    border-radius: 16px;
+}
+
+/* Ensure buttons at the bottom of forms are aligned */
+form input[type="submit"] {
+    margin-top: 25px; /* Add some space above the submit button */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-layout {
+        grid-template-columns: 1fr; /* Stack elements on smaller screens */
+        padding: 1rem;
+    }
+    .profile-sidebar {
+        padding: 1rem;
+    }
+    .profile-picture {
+        width: 120px;
+        height: 120px;
+    }
+    .profile-details {
+        padding: 0; /* Remove padding */
+    }
+}
+
+/* ========== Profile Page Stats Edit Fields ========== */
+.profile-stats h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 10px;
+    border-top: 1px solid #cbd5e1;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+.profile-stats label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #475569;
+    display: block;
+}
+.profile-stats input[type="number"] {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    margin-top: 4px;
+    margin-bottom: 10px;
+    border: 2px solid var(--border);
+    background: #fff;
+}
+.profile-stats input[type="number"]:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+/* ========== NEW: Dashboard Search Bar ========== */
+.dashboard-search-bar {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 1.1rem;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px var(--shadow);
+}
+.dashboard-search-bar:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+/* ========== NEW: Countdown Timer Styling ========== */
+.flight-countdown {
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    max-width: 180px; /* Give it a consistent width */
+    margin: 0 auto; /* Center it */
+}
+
+.flight-countdown.on-time {
+    color: var(--dark);
+}
+.flight-countdown.boarding {
+    background-color: #d1fae5; /* Light green */
+    color: #065f46; /* Dark green */
+}
+.flight-countdown.delayed {
+    background-color: #fee2e2; /* Light red */
+    color: #991b1b; /* Dark red */
+}
+.flight-countdown.departed, .flight-countdown.landed {
+    background-color: #f3f4f6; /* Light gray */
+    color: #374151;
+}
+.flight-countdown.cancelled {
+    background-color: #e5e5e5;
+    color: #525252;
+    font-weight: 700;
+}
+
+/* Adjust status board list for new countdown */
+.status-board-list li {
+    grid-template-columns: 2fr 1.5fr 1fr; /* Give more space for the countdown */
+}
+
+/* Responsive adjustment for small screens */
+@media (max-width: 768px) {
+    .status-board-list li {
+        grid-template-columns: 1fr; /* Stack on mobile */
+        text-align: center;
+    }
+    .flight-gate {
+        text-align: center;
+    }
+}s
